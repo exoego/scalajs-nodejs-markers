@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - uses: olafurpg/setup-scala@v13
+        with:
+          java-version: adopt@1.11
+      - uses: coursier/cache-action@v6
+      - name: Run Tests
+        run: sbt scalafmtSbtCheck scalafmtCheckAll ++fullOptJS
