@@ -1,4 +1,4 @@
-package net.exoego.facade
+package net.exoego.facade.nodejs
 
 import scala.scalajs.js
 
